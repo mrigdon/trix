@@ -88,8 +88,7 @@ class Trix.SelectionManager extends Trix.BasicObject
       clearTimeout(resumeTimeout)
       for handler in resumeHandlers
         handler.destroy()
-      if elementContainsNode(document, @element)
-        @selectionDidChange()
+      @selectionDidChange()
 
     resumeTimeout = setTimeout(resume, 200)
     resumeHandlers = for eventName in ["mousemove", "keydown"]
