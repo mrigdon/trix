@@ -324,7 +324,11 @@ class Trix.Composition extends Trix.BasicObject
     if selectedRange = @getSelectedRange(ignoreLock: true)
       currentAttributes = @document.getCommonAttributesAtRange(selectedRange)
 
+      console.log(getAllAttributeNames())
       for attributeName in getAllAttributeNames()
+        if currentAttributes.code and attributeName != 'code'
+          currentAttributes[attributeName] = false
+
         unless currentAttributes[attributeName]
           unless @canSetCurrentAttribute(attributeName)
             currentAttributes[attributeName] = false
